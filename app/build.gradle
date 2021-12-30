@@ -1,0 +1,121 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+
+    // Kotlin Kapt
+    id 'kotlin-kapt'
+
+    // Navigation Safe Args
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.bacon.cryptocoin"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        // viewBinding
+        viewBinding true
+    }
+}
+
+dependencies {
+    // Kotlin
+    // | Stdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    // Core
+    implementation 'androidx.core:core-ktx:1.7.0'
+
+    // Appcompat
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+
+    // Material Design Components
+    implementation 'com.google.android.material:material:1.4.0'
+
+    // UI Components
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
+    // Navigation Components
+    def nav_version = "2.3.5"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Retrofit 2
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    // Gson
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // OkHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // Activity version
+    def activity_version = "1.3.0"
+    implementation("androidx.activity:activity-ktx:$activity_version")
+
+    // Fragment version
+    def fragment_version = "1.3.6"
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
+    // ViewBindingPropertyDelegate
+    def view_binding_property_delegate = '1.5.3'
+    // To use only without reflection variants of viewBinding
+    implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    // Paging 3
+    def paging_version = "3.0.1"
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+
+
+    // Room
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //Dagger
+    def dagger_version = "2.40"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Line Chart Library
+    implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+    //Coil
+    implementation "io.coil-kt:coil:1.3.2"
+
+}
