@@ -12,7 +12,7 @@ import com.bacon.cryptocoin.presentation.ui.adapters.CoinsAdapter.ViewHolder
 
 
 class CoinsAdapter(
-    private val onItemClick :(id:String) ->Unit
+    private val onItemClick: (id: String) -> Unit
 ) : PagingDataAdapter<CoinsDto, ViewHolder>(BaseDiffUtilItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

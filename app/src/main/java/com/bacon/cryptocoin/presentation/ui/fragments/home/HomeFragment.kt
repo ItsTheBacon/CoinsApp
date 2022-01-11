@@ -59,8 +59,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun setOnItemClickListener(id: String) {
         findNavController().navigate(
-                HomeFragmentDirections
-                    .actionHomeFragmentToCoinsDetailFragment(id)
-            )
+            HomeFragmentDirections
+                .actionHomeFragmentToCoinsDetailFragment(id)
+        )
     }
 }

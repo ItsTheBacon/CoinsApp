@@ -5,10 +5,10 @@ import com.bacon.cryptocoin.di.AppComponent
 import com.bacon.cryptocoin.di.DaggerAppComponent
 
 class App : Application() {
-    lateinit var  appComponent : AppComponent
+    lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
-       initializeDagger()
+        initializeDagger()
     }
 
     private fun initializeDagger() {

@@ -7,5 +7,8 @@ import retrofit2.http.Query
 
 interface CoinsApiService {
     @GET("v2/assets/")
-    suspend fun fetchCoins(@Query("offset") start: Int?, @Query("limit") limit: Int?) : CoinsResponseDto<CoinsDto>
+    suspend fun fetchCoins(
+        @Query("offset") start: Int?,
+        @Query("limit") limit: Int?
+    ): CoinsResponseDto<CoinsDto>
 }

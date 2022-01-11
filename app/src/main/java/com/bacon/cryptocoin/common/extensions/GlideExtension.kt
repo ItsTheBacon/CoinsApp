@@ -40,12 +40,13 @@ fun ImageView.loadImage(url: String, progressBar: ProgressBar, placeholder: Int 
 }
 
 
-fun ImageView.loadLogo(url:String, placeHolder:Int = 0){
+fun ImageView.loadLogo(url: String, placeHolder: Int = 0) {
     Glide.with(this.context)
         .load(url)
         .error(placeHolder)
         .into(this)
 }
+
 fun ImageView.loadAvatar(url: String, placeholder: Int = 0) {
     Glide.with(this.context)
         .load(url)

@@ -8,7 +8,7 @@ class CoinsDetailRepository @Inject constructor(
     private val service: CoinDetailApiService
 ) : BaseRepository() {
 
-    fun fetchCoinDetail(id:String) = doRequest {
+    fun fetchCoinDetail(id: String) = doRequest {
         service.fetchCoinDetail(id)
     }
 }

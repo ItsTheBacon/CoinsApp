@@ -46,7 +46,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCoinDetailApiService(retrofit: Retrofit) :CoinDetailApiService =
+    fun provideCoinDetailApiService(retrofit: Retrofit): CoinDetailApiService =
         retrofit.create(CoinDetailApiService::class.java)
 
 }

@@ -15,8 +15,8 @@ class CoinsDetailViewModel @Inject constructor(
     private val _fetchCoinDetail = MutableLiveData<UIState<CoinsDto>>()
     val fetchCoinsDetail: LiveData<UIState<CoinsDto>> = _fetchCoinDetail
 
-    fun fetchCoinDetail(id:String){
-        subscribeTo(_fetchCoinDetail){
+    fun fetchCoinDetail(id: String) {
+        subscribeTo(_fetchCoinDetail) {
             repository.fetchCoinDetail(id)
         }
     }

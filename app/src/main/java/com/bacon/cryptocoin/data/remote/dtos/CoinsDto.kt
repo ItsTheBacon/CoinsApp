@@ -14,5 +14,5 @@ data class CoinsDto(
     val rank: String = "",
     override val id: String = "",
     val supply: String = ""
-): IBaseDiffModel
+) : IBaseDiffModel
 

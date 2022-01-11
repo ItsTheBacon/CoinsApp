@@ -7,7 +7,7 @@ import com.bacon.cryptocoin.data.remote.dtos.CoinsDto
 import retrofit2.HttpException
 import java.io.IOException
 
-class CoinsPagingSource (private val service: CoinsApiService) :
+class CoinsPagingSource(private val service: CoinsApiService) :
     PagingSource<Int, CoinsDto>() {
 
     override fun getRefreshKey(state: PagingState<Int, CoinsDto>): Int? {
@@ -20,7 +20,7 @@ class CoinsPagingSource (private val service: CoinsApiService) :
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CoinsDto> {
         return try {
             val nextPageNumber = params.loadSize
-            val response = service.fetchCoins(params.key,nextPageNumber)
+            val response = service.fetchCoins(params.key, nextPageNumber)
             LoadResult.Page(
                 data = response.data,
                 prevKey = null,

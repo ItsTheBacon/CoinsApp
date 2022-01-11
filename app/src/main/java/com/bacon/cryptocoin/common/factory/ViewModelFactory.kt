@@ -19,12 +19,14 @@ class ViewModelFactory @Inject constructor(
         return providers[modelClass]!!.get() as T
     }
 }
+
 class CoinsViewModelFactory @Inject constructor(
     viewModelModelProvider: Provider<CoinsDetailViewModel>
-) : ViewModelProvider.Factory{
+) : ViewModelProvider.Factory {
     private val providers = mapOf<Class<*>, Provider<out ViewModel>>(
         CoinsDetailViewModel::class.java to viewModelModelProvider
     )
+
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return providers[modelClass]!!.get() as T
     }
