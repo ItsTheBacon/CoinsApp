@@ -3,7 +3,6 @@ package com.bacon.cryptocoin.di
 import com.bacon.cryptocoin.common.constants.Constants
 import com.bacon.cryptocoin.data.remote.apiservices.CoinDetailApiService
 import com.bacon.cryptocoin.data.remote.apiservices.CoinsApiService
-import com.bacon.cryptocoin.data.remote.interceptors.ApiKeyInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -25,7 +24,6 @@ class NetworkModule {
                     HttpLoggingInterceptor.Level.BODY
                 )
             )
-            .addInterceptor(ApiKeyInterceptor())
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
