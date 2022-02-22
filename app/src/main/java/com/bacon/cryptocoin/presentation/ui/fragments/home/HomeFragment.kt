@@ -1,20 +1,18 @@
 package com.bacon.cryptocoin.presentation.ui.fragments.home
 
 import android.content.Context
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bacon.cryptocoin.App
 import com.bacon.cryptocoin.R
 import com.bacon.cryptocoin.common.base.BaseFragment
 import com.bacon.cryptocoin.common.factory.ViewModelFactory
 import com.bacon.cryptocoin.databinding.FragmentHomeBinding
+import com.bacon.cryptocoin.presentation.state.UIState
 import com.bacon.cryptocoin.presentation.ui.adapters.CoinsAdapter
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
@@ -35,12 +33,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun initialize() {
         binding.rvCoins.adapter = adapter
-        adapter.addLoadStateListener {
-            if (view != null) {
-                binding.rvCoins.isVisible = it.refresh is LoadState.NotLoading
-                binding.progressBarCoin.isVisible = it.refresh is LoadState.Loading
-            }
-        }
         setUpViewModel()
     }
 
@@ -50,9 +42,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     override fun setupObserves() {
-        lifecycleScope.launch {
-            viewModel.fetchCoins().collectLatest {
-                adapter.submitData(it)
+        viewModel.fetchCoinsState.subscribe {
+            binding.progressBarCoin.isVisible = it is UIState.Loading
+            when (it) {
+                is UIState.Error -> {
+                    Log.e("tag", "Error Coins ${it.error}")
+                }
+                is UIState.Loading -> {
+                    Log.e("tag", "Loading Coins $it")
+                }
+                is UIState.Success -> {
+                    Log.e("tag", "Success Coins ${it.data}")
+                    adapter.submitList(it.data)
+                }
             }
         }
     }
