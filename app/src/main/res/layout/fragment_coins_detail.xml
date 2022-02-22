@@ -20,19 +20,10 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="exitUntilCollapsed">
 
-            <View
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/ic_baseline_arrow_back_ios_24" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -306,8 +297,6 @@
             </LinearLayout>
 
         </ScrollView>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
