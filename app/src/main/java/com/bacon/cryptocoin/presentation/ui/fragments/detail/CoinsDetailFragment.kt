@@ -33,51 +33,33 @@ class CoinsDetailFragment : BaseFragment<FragmentCoinsDetailBinding, CoinsDetail
         setupViewModel()
     }
 
-    override fun setupListeners() {
-        setUpSwipeRefreshLayout()
-    }
-
-    private fun setUpSwipeRefreshLayout() {
-
-    }
-
     override fun setupObserves() {
         setUpCoinsDetail()
     }
 
     private fun setUpCoinsDetail() = with(binding) {
         viewModel.fetchCoinDetail(args.id)
-        viewModel.fetchCoinsDetail.observe(viewLifecycleOwner, {
+        viewModel.fetchCoinsDetail.subscribe {
             when (it) {
                 is UIState.Error -> {
-                    Log.e("anime", "setupObserves: ${it.error}")
+                    Log.e("anime", "Error CoinsDetail: ${it.error}")
                 }
                 is UIState.Loading -> {
-                    Log.e("anime", "setupObserves: $it")
+                    Log.e("anime", "Loading CoinsDetail: $it")
                 }
                 is UIState.Success -> {
-                    Log.e("anime", "setupObserves: ${it.data}")
-                    toolbar.apply {
-                        title = it.data.name
-                        subtitle = it.data.symbol
+                    Log.e("anime", "Success CoinsDetail: ${it.data}")
+                    it.data.map { data ->
+                        toolbar.apply {
+                            title = data.pair
+                            subtitle = data.exchange
+                        }
+                        name.text = data.pair
+                        symbol.text = data.exchange
                     }
-                    name.text = it.data.name
-                    symbol.text = it.data.symbol
-                    rank.text = getString(R.string.rank_value, it.data.rank)
-//                    priceToolbar.showPrice(it.data.price)
-//                    price.showPrice(it.data.price)
-//                    changeToolbar.showChange(it.data.percentChange24h)
-//                    percentChange1h.showChange(it.data.percentChange1h)
-//                    percentChange24h.showChange(it.data.percentChange24h)
-//                    percentChange7d.showChange(it.data.percentChange7d)
-//                    marketCap.showPrice(it.data.marketCap)
-//                    availableSupply.showPrice(it.data.availableSupply)
-//                    maxSupply.text = it.data.maxSupply
-//                    volume24h.showPrice(it.data.volume24h)
-//                    averagePrice24h.showPrice(it.data.averagePrice24h)
                 }
             }
-        })
+        }
     }
 
     private fun setupViewModel() {
