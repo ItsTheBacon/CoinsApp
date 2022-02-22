@@ -10,7 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 
 abstract class BaseFlowFragment(
     @LayoutRes layoutId: Int,
-    @IdRes private val navHostFragmentId: Int
+    @IdRes private val navHostFragmentId: Int,
 ) : Fragment(layoutId) {
 
     protected lateinit var navController: NavController
