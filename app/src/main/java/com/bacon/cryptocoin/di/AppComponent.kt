@@ -8,7 +8,7 @@ import com.bacon.cryptocoin.presentation.ui.fragments.search.SearchFragment
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = [NetworkModule::class])
+@Component(modules = [NetworkModule::class, RepositoryModule::class])
 @Singleton
 interface AppComponent {
 
