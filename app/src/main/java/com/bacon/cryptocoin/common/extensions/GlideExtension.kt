@@ -19,7 +19,7 @@ fun ImageView.loadImage(url: String, progressBar: ProgressBar, placeholder: Int 
                 e: GlideException?,
                 model: Any?,
                 target: Target<Drawable>?,
-                isFirstResource: Boolean
+                isFirstResource: Boolean,
             ): Boolean {
                 progressBar.visibility = View.GONE
                 return false
@@ -30,7 +30,7 @@ fun ImageView.loadImage(url: String, progressBar: ProgressBar, placeholder: Int 
                 model: Any?,
                 target: Target<Drawable>?,
                 dataSource: DataSource?,
-                isFirstResource: Boolean
+                isFirstResource: Boolean,
             ): Boolean {
                 progressBar.visibility = View.GONE
                 return false
