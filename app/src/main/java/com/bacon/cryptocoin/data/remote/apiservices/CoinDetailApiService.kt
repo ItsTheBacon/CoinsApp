@@ -1,13 +1,14 @@
 package com.bacon.cryptocoin.data.remote.apiservices
 
-import com.bacon.cryptocoin.data.remote.dtos.CoinsDto
+import com.bacon.cryptocoin.data.remote.dtos.CoinDetailDto
+import com.bacon.cryptocoin.data.remote.dtos.CoinsItemDto
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CoinDetailApiService {
-    @GET("v2/assets/{id}/")
+    @GET("markets")
     suspend fun fetchCoinDetail(
-        @Path("id") id: String
-    ): CoinsDto
+        @Query("coinId") id: String,
+    ): List<CoinDetailDto>
 
 }
