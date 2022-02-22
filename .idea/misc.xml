@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/StudioProjects/CryptoCoin/app/src/main/res/layout/fragment_coins_detail.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/StudioProjects/CryptoCoin/app/src/main/res/layout/item_coins.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoCoin/app/src/main/res/drawable/ic_back_for_toolbar.xml" value="0.22205128205128205" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoCoin/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoCoin/app/src/main/res/layout/fragment_coins_detail.xml" value="0.25" />
