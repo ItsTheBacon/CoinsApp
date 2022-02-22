@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class ViewModelFactory @Inject constructor(
-    myViewModelProvider: Provider<HomeViewModel>
+    myViewModelProvider: Provider<HomeViewModel>,
 ) : ViewModelProvider.Factory {
     private val providers = mapOf<Class<*>, Provider<out ViewModel>>(
         HomeViewModel::class.java to myViewModelProvider
@@ -21,7 +21,7 @@ class ViewModelFactory @Inject constructor(
 }
 
 class CoinsViewModelFactory @Inject constructor(
-    viewModelModelProvider: Provider<CoinsDetailViewModel>
+    viewModelModelProvider: Provider<CoinsDetailViewModel>,
 ) : ViewModelProvider.Factory {
     private val providers = mapOf<Class<*>, Provider<out ViewModel>>(
         CoinsDetailViewModel::class.java to viewModelModelProvider
