@@ -11,12 +11,9 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class, RepositoryModule::class])
 @Singleton
 interface AppComponent {
-
     fun viewModelsFactory(): ViewModelFactory
     fun coinsViewModelFactory(): CoinsViewModelFactory
     fun inject(fragment: CoinsDetailFragment)
     fun inject(fragment: HomeFragment)
-
-
     fun inject(fragment: SearchFragment)
 }
