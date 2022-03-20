@@ -1,15 +1,12 @@
 package com.bacon.cryptocoin.presentation.ui.fragments.home
 
-import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.bacon.cryptocoin.App
 import com.bacon.cryptocoin.R
 import com.bacon.cryptocoin.common.base.BaseFragment
-import com.bacon.cryptocoin.common.factory.ViewModelFactory
 import com.bacon.cryptocoin.databinding.FragmentHomeBinding
 import com.bacon.cryptocoin.presentation.state.UIState
 import com.bacon.cryptocoin.presentation.ui.adapters.CoinsAdapter
@@ -21,24 +18,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override val binding by viewBinding(FragmentHomeBinding::bind)
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-    override lateinit var viewModel: HomeViewModel
+    lateinit var viewModelFactory: HomeViewModelFactory
+    override val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+    }
     private val adapter = CoinsAdapter(this::setOnItemClickListener)
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity().application as App).appComponent.inject(this)
+    override fun initializeSubComponent() {
+        getInjector().createCoinsSubComponent().inject(this)
     }
 
     override fun initialize() {
         binding.rvCoins.adapter = adapter
-        setUpViewModel()
-    }
-
-    private fun setUpViewModel() {
-        viewModel = ViewModelProvider(this, viewModelFactory)
-            .get(HomeViewModel::class.java)
     }
 
     override fun setupObserves() {
@@ -60,9 +52,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun setOnItemClickListener(id: String) {
-        findNavController().navigate(
-            HomeFragmentDirections
-                .actionHomeFragmentToCoinsDetailFragment(id)
-        )
+        Toast.makeText(requireContext(), "Ids $id", Toast.LENGTH_SHORT).show()
     }
 }
