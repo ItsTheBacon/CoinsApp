@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.bacon.cryptocoin.di.Injector
 import com.bacon.cryptocoin.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -19,6 +20,15 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
 
     protected abstract val binding: BaseViewBinding
     protected abstract val viewModel: ViewModel
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initializeSubComponent()
+    }
+
+    open fun initializeSubComponent() {
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,5 +65,9 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
                 }
             }
         }
+    }
+
+    fun getInjector(): Injector {
+        return (activity?.application as Injector)
     }
 }
