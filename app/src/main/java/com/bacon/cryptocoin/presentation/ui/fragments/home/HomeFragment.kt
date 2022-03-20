@@ -24,7 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
     private val adapter = CoinsAdapter(this::setOnItemClickListener)
 
-
     override fun initializeSubComponent() {
         getInjector().createCoinsSubComponent().inject(this)
     }

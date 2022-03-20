@@ -8,7 +8,7 @@ import dagger.Provides
 @Module
 class CoinsModule {
 
-    @CryptoScope
+    @CoinsScope
     @Provides
     fun provideCoinsViewModelFactory(
         useCase: FetchCoinsUseCase,
