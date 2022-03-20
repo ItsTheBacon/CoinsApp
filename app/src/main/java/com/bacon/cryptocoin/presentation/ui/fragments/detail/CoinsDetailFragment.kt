@@ -1,14 +1,11 @@
 package com.bacon.cryptocoin.presentation.ui.fragments.detail
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.bacon.cryptocoin.App
 import com.bacon.cryptocoin.R
 import com.bacon.cryptocoin.common.base.BaseFragment
-import com.bacon.cryptocoin.common.factory.CoinsViewModelFactory
 import com.bacon.cryptocoin.databinding.FragmentCoinsDetailBinding
 import com.bacon.cryptocoin.presentation.state.UIState
 import javax.inject.Inject
@@ -20,17 +17,9 @@ class CoinsDetailFragment : BaseFragment<FragmentCoinsDetailBinding, CoinsDetail
 
     @Inject
     lateinit var viewModelFactory: CoinsViewModelFactory
-    override lateinit var viewModel: CoinsDetailViewModel
     private val args: CoinsDetailFragmentArgs by navArgs()
-
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity().application as App).appComponent.inject(this)
-    }
-
-    override fun initialize() {
-        setupViewModel()
+    override val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(CoinsDetailViewModel::class.java)
     }
 
     override fun setupObserves() {
@@ -62,8 +51,4 @@ class CoinsDetailFragment : BaseFragment<FragmentCoinsDetailBinding, CoinsDetail
         }
     }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, viewModelFactory)
-            .get(CoinsDetailViewModel::class.java)
-    }
 }
