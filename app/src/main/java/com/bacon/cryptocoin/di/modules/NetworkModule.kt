@@ -1,4 +1,4 @@
-package com.bacon.cryptocoin.di
+package com.bacon.cryptocoin.di.modules
 
 import com.bacon.cryptocoin.common.constants.Constants
 import com.bacon.cryptocoin.data.remote.apiservices.CoinDetailApiService
