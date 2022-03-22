@@ -22,6 +22,10 @@ class CoinsDetailFragment : BaseFragment<FragmentCoinsDetailBinding, CoinsDetail
         ViewModelProvider(this, viewModelFactory).get(CoinsDetailViewModel::class.java)
     }
 
+    override fun initializeSubComponent() {
+        getInjector().createCoinsDetailSubComponent().inject(this)
+    }
+
     override fun setupObserves() {
         setUpCoinsDetail()
     }

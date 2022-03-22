@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bacon.cryptocoin.R
 import com.bacon.cryptocoin.common.base.BaseFragment
@@ -23,7 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
     }
     private val adapter = CoinsAdapter(this::setOnItemClickListener)
-
     override fun initializeSubComponent() {
         getInjector().createCoinsSubComponent().inject(this)
     }
